@@ -1,0 +1,86 @@
+.popular-topics {
+  padding: 2rem;
+  background-color: #fff;
+}
+
+.topics-container {
+  display: grid;
+  gap: 1rem; /* Adjust the gap between the cards as needed */
+  justify-content: center;
+  grid-template-columns: auto auto auto;
+}
+
+.topic-card {
+  max-width: 500px; /* Set a maximum width for the cards */
+  background-color: rgb(255, 255, 255);
+  padding: 1.0rem; /* Reduce padding to make the cards smaller */
+  border-radius: 0.1px;
+  box-sizing: border-box;
+  color: rgba(0, 0, 0, 0.55);
+  font-family: 'Poppins', sans-serif;
+  transition: transform 0.3s ease-in-out; /* Add transition for smooth zoom effect */
+  cursor: pointer; /* Indicate that the card is clickable */
+}
+
+.topic-card:hover {
+  transform: scale(1.05); /* Zoom effect on hover */
+}
+
+.topic-card img {
+  width: 100%;
+  height: 150px; /* Set a fixed height for the images */
+  object-fit: cover; /* Ensure the image covers the area without distortion */
+  display: block;
+  border-radius: 4px;
+  transition: transform 0.3s ease-in-out; /* Add transition for smooth zoom effect */
+}
+
+.topic-card:hover img {
+  transform: scale(1.1); /* Zoom effect on hover for the image */
+}
+
+.card-content {
+  margin-top: 0.5rem; /* Reduce the top margin to make the cards smaller */
+}
+
+.card-content h3 {
+  font-size: 1rem; /* Adjust font size */
+}
+
+.card-content p {
+  font-size: 0.875rem; /* Adjust font size */
+}
+
+@media (max-width: 768px) {
+  .topics-container {
+    grid-template-columns: auto auto; /* 2 cards per row on tablets */
+  }
+}
+
+@media (max-width: 480px) {
+  .topics-container {
+    grid-template-columns: auto; /* 1 card per row on mobile devices */
+  }
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.pagination button {
+  margin: 0 0.5rem;
+  padding: 0.5rem 1rem;
+  color: #1a3480;
+  background-color: #ffffff;
+  border-radius: 50%; /* Make buttons round */
+  border: 1px solid #1a3480; /* Add border to buttons */
+  cursor: pointer;
+}
+
+.pagination button.active {
+  background-color: #1a3480;
+  color: #ffffff;
+  border-radius: 50%; /* Make active button round */
+}

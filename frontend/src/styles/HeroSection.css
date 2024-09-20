@@ -1,0 +1,52 @@
+.hero-section {
+  position: relative;
+  width: 100%;
+  height: 40vh;
+  background-image: url('/assets/beachimage.avif'); /* Update with your image path */
+   background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* Align items to the start (left) */
+  color: white;
+  text-align: left; /* Align text to the left */
+  padding-left: 2rem; /* Add padding to the left if needed */
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* Add a dark overlay */
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* Align items to the start (left) */
+}
+
+.hero-content {
+  max-width: 500px; /* Adjust the maximum width if needed */
+  margin: 0;
+  padding: 1.5rem;
+  color: #cfcece;
+}
+
+.hero-content h1 {
+  font-size: 2rem; /* Adjust the heading size if needed */
+  margin-bottom: 0.75rem;
+  font-family: Recoleta, ui-sans-serif;
+  font-weight: bold;
+}
+
+.hero-content p {
+  font-size: 1rem; /* Adjust the paragraph text size if needed */
+  margin-bottom: 1rem;
+ font-family: Jost, sans-serif;
+}
+
+.hero-details p {
+  margin: 0.25rem 0;
+   font-family: Jost, sans-serif;
+  font-size: 0.875rem; /* Adjust the details text size if needed */
+}

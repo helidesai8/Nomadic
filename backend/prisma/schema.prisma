@@ -1,0 +1,130 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  ADMIN
+  USER
+  MANAGER
+}
+
+model User {
+  id               Int       @id @default(autoincrement())
+  first_name       String
+  last_name        String
+  email            String    @unique
+  password         String
+  resetToken       String?
+  resetTokenExpiry DateTime?
+  createdAt        DateTime  @default(now())
+  reviews          Review[]
+  role       Role     @default(USER)  
+  Wishlist         Wishlist[]
+
+  @@map("user")
+  Bookings Bookings[]
+  BlogPost BlogPost[]
+}
+
+
+
+model TourCategory {
+  id           Int           @id @default(autoincrement())
+  name         String
+  tourPackages TourPackage[]
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+}
+
+model TourPackage {
+  id                       Int          @id @default(autoincrement())
+  name                     String
+  location                 String
+  city                     String
+  price                    Float
+  image                    String
+  freeCancelationAvailable Boolean
+  tourCategory             TourCategory @relation(fields: [tourCategoryId], references: [id])
+  tourCategoryId           Int
+  accommodationDetails     String
+  transportationDetails    String
+  activities               String
+  startDate                DateTime
+  endDate                  DateTime
+  duration                 Int
+  createdAt                DateTime     @default(now())
+  updatedAt                DateTime     @updatedAt
+  reviews                  Review[]
+  Bookings                 Bookings[]
+  Wishlist                 Wishlist[]
+}
+
+model Review {
+  id            Int         @id @default(autoincrement())
+  comment       String
+  rating        Int
+  tourPackage   TourPackage @relation(fields: [tourPackageId], references: [id])
+  tourPackageId Int
+  user          User        @relation(fields: [userId], references: [id])
+  userId        Int         
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+}
+
+model Bookings {
+  id             Int         @id @default(autoincrement())
+  noOfPeople     String?
+  totalCost      String?
+  note           String?     @default("")
+  tourPackage    TourPackage @relation(fields: [tourPackageId], references: [id])
+  tourPackageId  Int
+  createdAt      DateTime    @default(now())
+  userId         Int
+  user           User        @relation(fields: [userId], references: [id])
+}
+
+model BlogPost {
+  id          Int       @id @default(autoincrement())
+  title       String
+  category    String
+  description String
+  thumbnail   String
+  content     String
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  comments    Comment[]
+  userId      Int
+  user        User       @relation(fields: [userId], references: [id])
+}
+
+model Comment {
+  id         Int      @id @default(autoincrement())
+  comment    String
+  createdAt  DateTime @default(now())
+  blogPost   BlogPost @relation(fields: [blogPostId], references: [id])
+  blogPostId Int
+  name       String
+  ratings    Int
+}
+
+model Wishlist {
+  id           Int          @id @default(autoincrement())
+  tourPackage   TourPackage  @relation(fields: [tourPackageId], references: [id])
+  tourPackageId Int
+  user          User         @relation(fields: [userId], references: [id])
+  userId        Int
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
+}                                                                         
+

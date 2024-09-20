@@ -1,0 +1,28 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root, .app {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.app {
+font-family: 'Poppins', sans-serif;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+  padding-top: 4rem; /* Add some padding to account for the fixed navbar */
+}
+
+footer {
+  flex-shrink: 0;
+
+}
