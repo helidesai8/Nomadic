@@ -39,5 +39,5 @@ EXPOSE 8080
 
 #npx prisma migrate deploy && npx prisma db seed &&
 # Run Prisma migrations and start the server
-# CMD ["sh", "-c", "npx prisma migrate deploy && npx prisma db seed && npm run start"]
-CMD ["sh", "-c", "npm run start"]
+CMD ["sh", "-c", "npx prisma migrate deploy && npx prisma db seed && npm run start"]
+# CMD ["sh", "-c", "npm run start"]
