@@ -31,8 +31,7 @@ WORKDIR /app
 # Copy only necessary files from the build stage
 COPY --from=build /app/ ./
 
-# Install only production dependencies
-RUN npm install --only=production
+RUN npm install
 
 # Expose the port
 EXPOSE 8080
