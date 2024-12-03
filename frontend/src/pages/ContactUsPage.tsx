@@ -52,7 +52,6 @@ const AboutUsGrid = styled(Grid)({
 });
 
 const ContactUsPage: React.FC = () => {
-    const URL = import.meta.env.VITE_BASE_API_URL;
     const [formData, setFormData] = React.useState({
         name: "",
         email: "",
@@ -72,7 +71,7 @@ const ContactUsPage: React.FC = () => {
         console.log(formData);
         if (validate()) {
             try {
-                const data = axios.post(`${URL}/api/v1/contact`, formData);
+                const data = axios.post(`/api/v1/contact`, formData);
                 toast.success("Email sent successfully");
             } catch (error) {
                 toast.error("Failed to send email");

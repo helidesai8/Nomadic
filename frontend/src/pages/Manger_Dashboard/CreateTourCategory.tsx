@@ -17,7 +17,6 @@ interface TourCategory {
 }
 
 const TourCategoryPage: React.FC = () => {
-  const URL = import.meta.env.VITE_BASE_API_URL
   const [tourCategories, setTourCategories] = useState<TourCategory[]>([]);
   const [newCategory, setNewCategory] = useState('');
   const [editingCategory, setEditingCategory] = useState<TourCategory | null>(null);
@@ -28,7 +27,7 @@ const TourCategoryPage: React.FC = () => {
 
   const fetchTourCategories = async () => {
     try {
-      const response = await axios.get(URL + '/api/v1/tour-categories/all');
+      const response = await axios.get('/api/v1/tour-categories/all');
       setTourCategories(response.data.data);
     } catch (error) {
       console.error('Error fetching tour categories:', error);
@@ -39,7 +38,7 @@ const TourCategoryPage: React.FC = () => {
     if(newCategory) {
 
     try {
-      const response = await axios.post(URL + '/api/v1/tour-categories', { name: newCategory });
+      const response = await axios.post('/api/v1/tour-categories', { name: newCategory });
       setTourCategories([...tourCategories, response.data.data]);
       setNewCategory('');
       toast.success('Category added successfully!');
@@ -55,7 +54,7 @@ const TourCategoryPage: React.FC = () => {
 
   const handleDeleteCategory = async (id: number) => {
     try {
-      await axios.delete(URL +`/api/v1/tour-categories/${id}`);
+      await axios.delete(`/api/v1/tour-categories/${id}`);
       setTourCategories(tourCategories.filter(category => category.id !== id));
       toast.success('Category deleted successfully!');
     } catch (error) {
@@ -67,7 +66,7 @@ const TourCategoryPage: React.FC = () => {
   const handleEditCategory = async () => {
     if (editingCategory) {
       try {
-        const response = await axios.put(URL+ `/api/v1/tour-categories/${editingCategory.id}`, { name: editingCategory.name });
+        const response = await axios.put(`/api/v1/tour-categories/${editingCategory.id}`, { name: editingCategory.name });
         setTourCategories(tourCategories.map(category => (category.id === editingCategory.id ? response.data.data : category)));
         setEditingCategory(null);
         toast.success('Category updated successfully!');
