@@ -33,11 +33,10 @@ const Manage_Listing: React.FC = () => {
   const [enddate, setEndDate] = useState('');
   
   
-  const URL = import.meta.env.VITE_BASE_API_URL;
   useEffect(() => {
     const fetchTours = async () => {
       try {
-        const response = await axios.get(URL+`/api/v1/tours`, {
+        const response = await axios.get(`/api/v1/tours`, {
           params: {
             page,
             pageSize,
@@ -64,7 +63,7 @@ const Manage_Listing: React.FC = () => {
 
   const handleDeleteTour = async (id: number) => {
     try {
-      await axios.delete(URL + `/api/v1/tours/${id}`);
+      await axios.delete(`/api/v1/tours/${id}`);
       toast.success('Tour deleted successfully');
       setOpenDialog(false);
       setTourToDelete(null);

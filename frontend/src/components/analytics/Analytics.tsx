@@ -24,7 +24,7 @@ const Analytics = () => {
 
     useEffect(() => {
         // Fetch data for total users
-        axios.get(`${import.meta.env.VITE_BASE_API_URL}/api/v1/analytics/gettotalusers`)
+        axios.get(`/api/v1/analytics/gettotalusers`)
             .then(response => {
                 const { data } = response;
                 setTotalUsersData(data.totalUsersData);
@@ -32,7 +32,7 @@ const Analytics = () => {
             .catch(error => console.error('Error fetching total users data:', error));
 
         // Fetch data for total revenue
-        axios.get(`${import.meta.env.VITE_BASE_API_URL}/api/v1/analytics/gettotalrevenue`)
+        axios.get(`/api/v1/analytics/gettotalrevenue`)
             .then(response => {
                 const { data } = response;
                 setTotalRevenueData(data.totalRevenueData);

@@ -35,7 +35,6 @@ export interface Tour {
 
 const AddTourPage: React.FC = () => {
 
-  const URL = import.meta.env.VITE_BASE_API_URL;
   const [newTour, setNewTour] = useState<Tour>({
     name: '',
     location: '',
@@ -113,7 +112,7 @@ const AddTourPage: React.FC = () => {
     // Fetch tour categories from the API
     const fetchTourCategories = async () => {
       try {
-        const response = await axios.get(URL + '/api/v1/tour-categories');
+        const response = await axios.get('/api/v1/tour-categories');
         setTourCategories(response.data.data);
       } catch (error) {
         console.error('Error fetching tour categories:', error);
@@ -158,7 +157,7 @@ const AddTourPage: React.FC = () => {
           endDate: new Date(newTour.endDate).toISOString()
         };
   
-        const response = await axios.post(URL+'/api/v1/tours', payload);
+        const response = await axios.post('/api/v1/tours', payload);
   
         toast.success('Tour added successfully!');
         navigate('/manage');

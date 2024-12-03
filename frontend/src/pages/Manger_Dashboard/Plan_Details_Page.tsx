@@ -19,7 +19,6 @@ interface TourCategory {
 
 const PlanDetails: React.FC = () => {
 
-  const URL = import.meta.env.VITE_BASE_API_URL;
   const { id } = useParams<{ id: string }>();
   const [tour, setTour] = useState<Tour | undefined>(undefined);
   const [isLoading, setIsLoading] = useState(true);
@@ -46,7 +45,7 @@ const PlanDetails: React.FC = () => {
   useEffect(() => {
     const fetchTourCategories = async () => {
       try {
-        const response = await axios.get(URL + '/api/v1/tour-categories/all');
+        const response = await axios.get('/api/v1/tour-categories/all');
         setTourCategories(response.data.data);
       } catch (error) {
         console.error('Error fetching tour categories:', error);
@@ -54,7 +53,7 @@ const PlanDetails: React.FC = () => {
     };
     
     const fetchTour = async () => {
-      const response = await axios.get(URL + `/api/v1/tours/${id}`);
+      const response = await axios.get(`/api/v1/tours/${id}`);
       const tourData = response.data;
       
       // Format the date fields to YYYY-MM-DD
@@ -157,7 +156,7 @@ const PlanDetails: React.FC = () => {
         endDate: new Date(editedTour?.endDate || '').toISOString()
       };
       try{
-      const data = await axios.put(URL + `/api/v1/tours/${id}`, payload);
+      const data = await axios.put(`/api/v1/tours/${id}`, payload);
       toast.success("Tour details saved successfully!");
 
       navigate('/manage');

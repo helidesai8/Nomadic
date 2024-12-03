@@ -44,7 +44,7 @@ export const getTours = async ({
     query += minDuration ? `${query ? '&' : '?'}minDuration=${minDuration}` : '';
     query += maxDuration ? `${query ? '&' : '?'}maxDuration=${maxDuration}` : '';
     query += pageSize ? `${query ? '&' : '?'}pageSize=${pageSize}` : '';
-    const response = await fetch(`${import.meta.env.VITE_BASE_API_URL}/api/v1/tours${query}`);
+    const response = await fetch(`/api/v1/tours${query}`);
     if (!response.ok) {
       throw new Error('Failed to fetch');
     }
