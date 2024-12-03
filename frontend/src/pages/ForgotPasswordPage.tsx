@@ -29,7 +29,7 @@ const ForgotPasswordPage = () => {
   const navigate = useNavigate();
 
   const onSubmit = async (data: FormValues) => {
-    const response = await fetch(`${(import.meta as any).env.VITE_BASE_API_URL}/api/v1/forgotPassword`, {
+    const response = await fetch(`/api/v1/forgotPassword`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

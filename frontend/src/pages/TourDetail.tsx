@@ -175,7 +175,7 @@ export function TourDetail() {
   const checkWishlist = async () => {
     console.log('Checking wishlist:', userId, tourPackage?.id);
     try {
-      const response = await axios.post(`${(import.meta as any).env.VITE_BASE_API_URL}/api/v1/wishlist/check`, {
+      const response = await axios.post(`/api/v1/wishlist/check`, {
         userId: userId,
         tourPackageId: tourPackage.id,
       });
@@ -195,11 +195,11 @@ export function TourDetail() {
     const fetchTourPackage = async () => {
       try {
         setLoading(true);
-        const response = await axios.get(`${(import.meta as any).env.VITE_BASE_API_URL}/api/v1/tours/${id}`).then( (res) =>{ 
+        const response = await axios.get(`/api/v1/tours/${id}`).then( (res) =>{ 
           console.log("qwerty",res.data);
           
           setTourPackage(res.data)
-          axios.post(`${(import.meta as any).env.VITE_BASE_API_URL}/api/v1/wishlist/check`, {
+          axios.post(`/api/v1/wishlist/check`, {
             userId: userId,
             tourPackageId: res.data.id,
           }).then((response) => {
@@ -235,14 +235,14 @@ console.log("ssss",response.data);
       console.log('wishlist:', wishListId);
       if (wishlist) {
         // Remove from wishlist
-        await axios.delete(`${(import.meta as any).env.VITE_BASE_API_URL}/api/v1/wishlist/${wishListId}`);
+        await axios.delete(`/api/v1/wishlist/${wishListId}`);
         checkWishlist();
         console.log('Removed from wishlist');
       } else {
         // Add to wishlist
         console.log('Adding to wishlist', tourPackage?.id, userId);
 
-        await axios.post(`${(import.meta as any).env.VITE_BASE_API_URL}/api/v1/wishlist`, {
+        await axios.post(`/api/v1/wishlist`, {
           tourPackageId: tourPackage?.id,
           userId: userId,
         });

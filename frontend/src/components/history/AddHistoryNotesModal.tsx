@@ -32,7 +32,7 @@ const AddHistoryNotesModal = ({ location, note, id }: { location: string, note: 
 
     const handleSubmit = async () => {
         try {
-            const response = await axios.patch(`${(import.meta as any).env.VITE_BASE_API_URL}/api/v1/booking/${id}`, { note: input });
+            const response = await axios.patch(`/api/v1/booking/${id}`, { note: input });
             if (response.status === 200) {
                 if (response.data.success) {
                     toast({

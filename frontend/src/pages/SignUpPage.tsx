@@ -38,7 +38,7 @@ const SignUpPage = () => {
   const navigate = useNavigate();
   const onSubmit = async (data: FormValues) => {
     setError("")
-    const response = await fetch(`${(import.meta as any).env.VITE_BASE_API_URL}/api/v1/signUp`, {
+    const response = await fetch(`/api/v1/signUp`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

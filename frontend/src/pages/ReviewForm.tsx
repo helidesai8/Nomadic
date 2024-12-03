@@ -85,7 +85,7 @@ const ReviewForm: React.FC = () => {
     setIsSubmitting(true);
 
     try {
-      const response = await axios.post(`${(import.meta as any).env.VITE_BASE_API_URL}/api/v1/reviews`, {
+      const response = await axios.post(`/api/v1/reviews`, {
         tourPackageId,
         userId,
         rating,

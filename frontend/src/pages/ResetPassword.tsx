@@ -31,7 +31,7 @@ const ResetPassword = () => {
 
   const onSubmit = async (data: FormValues) => {
     console.log("Reset password on submit called.")
-    const response = await fetch(`${(import.meta as any).env.VITE_BASE_API_URL}/api/v1/reset-password/`, {
+    const response = await fetch(`/api/v1/reset-password/`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

@@ -28,7 +28,7 @@ const UserHistory: React.FC = () => {
     const { id } = useParams()
     useEffect(() => {
         setLoading(true)
-        axios.get(`${(import.meta as any).env.VITE_BASE_API_URL}/api/v1/booking/${id}`).then((response: any) => {
+        axios.get(`/api/v1/booking/${id}`).then((response: any) => {
             console.log("res", response.data)
             setCards(response.data.data)
         }).catch((error: any) => {

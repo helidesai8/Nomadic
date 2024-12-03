@@ -15,8 +15,7 @@ const Recommendations: React.FC = () => {
     const [loading, setLoading] = useState(false)
     useEffect(() => {
         setLoading(true)
-        console.log("Rec", `${(import.meta as any).env.VITE_BASE_API_URL}`)
-        axios.get(`${(import.meta as any).env.VITE_BASE_API_URL}/api/v1/tours`).then((response) => {
+        axios.get(`/api/v1/tours`).then((response) => {
             console.log("res", response.data)
             setCards(response.data.data)
         }).catch((error) => {

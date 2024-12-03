@@ -32,7 +32,7 @@ const LoginPage = () => {
   const onSubmit = async (data: FormValues) => {
     try {
       setError("")
-      const response = await fetch(`${(import.meta as any).env.VITE_BASE_API_URL}/api/v1/login`, {
+      const response = await fetch(`/api/v1/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
